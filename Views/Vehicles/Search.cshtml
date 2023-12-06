@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SwiftCarRental.Models.Vehicle>
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<div class="container">
+    @foreach (var car in Model)
+    {
+        <div class="car-box">
+            <div class="car-image">
+                <!-- Image goes here -->
+                <img src="@Url.Content("~/path/to/car/image.jpg")" alt="Car Image" />
+            </div>
+            <div class="car-details">
+                <p>Model: @car.Model</p>
+                <p>Brand: @car.Brand</p>
+                <p>Year: @car.ModelYear</p>
+                <p>Type: @car.Type</p>
+                <p>Odometer: @car.Odometer</p>
+                <p>Seats: @car.NoOfSeats</p>
+                <p>Price: @GetPrice(car.PricePerHour, 10) $/hour</p>
+            </div>
+        </div>
+    }
+</div>
+
+@functions {
+    public decimal GetPrice(decimal? pricePerHour, int hours)
+    {
+        return (pricePerHour ?? 0) * hours;
+    }
+}

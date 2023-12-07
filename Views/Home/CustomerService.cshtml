@@ -1,0 +1,210 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<html lang="en">
+@*add CSS style*@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> @* 引入 jQuery 库 *@
+    <style>
+        
+        /* 给按钮设置白色背景、无边框，宽度为页面的80% */
+        .toggle-answer {
+            background-color: white;
+            border: none;
+            width: 100%;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc; /* 添加下边框，灰色，线条不太粗 */
+            /* 调整按钮文字样式 */
+            text-align: left; /* 按钮文字左对齐 */
+            padding: 10px; /* 调整按钮内边距 */
+            font-size: 18px; /* 调整按钮文字大小 */
+        }
+
+        /* 调整答案文本的样式 */
+        .answer {
+            margin-top: 10px; /* 添加顶部间距 */
+            margin-left: 10px; /* 添加左边距，与按钮内容保持左对齐 */
+            display: none; /* 初始状态隐藏答案 */
+        }
+
+        /* 调整表单标题字体大小 */
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            width: 40%;
+            /* float: right; /* 右浮动，使其位于页面的右边 */ */
+            padding-left: 10px; /* 可选 - 添加一些左边距来和页面的其他内容留出间隔 */
+            text-align: left; /* 新增的样式 - 将容器内的元素右对齐 */
+            /*margin-bottom: 20px;*/ /* 这里添加了底部间距 */
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="tel"] {
+            width: calc(100% - 10px); /* 让输入框宽度填满容器，减去一些内边距 */
+            margin-bottom: 10px; /* 可选 - 添加一些底部间距 */
+         }
+            
+
+        .form-container textarea {
+            width: calc(100% - 10px); /* 让文本域宽度填满容器，减去一些内边距 */
+            margin-bottom: -10px; /* 可选 - 添加一些底部间距 */
+        }
+
+        .submit-button {
+            /* 可以根据需要自行调整样式 */
+            position: relative; /* 开启相对定位 */
+            top: 20px; /* 调整按钮相对于原本位置的上下偏移量 */
+            /* 或者使用其他布局方式，比如浮动 */
+            /* float: right; */
+            /* margin-top: 20px; */
+        }
+
+        .create-link {
+            margin-top: 20px; /* 添加顶部间距 */
+            display: inline-block; /* 让链接以块级元素显示，方便设置间距 */
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="table-container">
+        <h2>Popular Questions</h2>
+
+
+        @* 问题展示 *@
+        <div class="faq-item">
+            <button class="toggle-answer">How can I contact you directly if urgent?</button>
+            <div class="answer" style="display: none;">Please contact us with cellphone if urgent: +1 123 456 7890. And also you can contact us via email: SwiftCarRentalService@gmail.com</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="toggle-answer">How to rent a car</button>
+            <div class="answer" style="display: none;">Please search with start date and end date, we will show you available cars, and then you can reserve one of them directly</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="toggle-answer">Do I have to return the car to the same location where I picked it up?</button>
+            <div class="answer" style="display: none;">For all the bookings, return the SwiftRental Car to its pick-up location. If you leave SwiftRental Car away from your Pick-up location, you will be charged up to $ 200 in wrong location drop penalties + Car recovery expenses incurred by SwiftRental until the vehicle is returned to the correct location. Late fees will also be charged at the effective hourly booking rate.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="toggle-answer">Can I book for any period of time?</button>
+            <div class="answer" style="display: none;">You can book cars by the hour, day, week, or month.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="toggle-answer">What happens if I return the car late?</button>
+            <div class="answer" style="display: none;">A high penalty will be applicable for the amount of time you are late. In order to avoid paying this penalty, you can extend the booking from the app, well in advance.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="toggle-answer">Who pays for the fuel?</button>
+            <div class="answer" style="display: none;">SwiftCar is providing UNLIMITED KILOMETERS with NO FUEL Bookings, but the Guests are expected to drop the car at an equal or higher fuel level than the Booking Start time. Reimbursement for any excess fuel will be processed to the Guests. Refueling Charges will be levied if the vehicle is dropped at a lower fuel level than the Booking Start time.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="toggle-answer">Where can I find the Car Keys?</button>
+            <div class="answer" style="display: none;">"After you unlock the car using KLE, you can find the car keys in the dashboard." At times previous customers would have kept the car keys on the seat, On the sun visor, dropped below the seats.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="toggle-answer">How will I receive my Refund?</button>
+            <div class="answer" style="display: none;">"Refund will be initiated to the account/card used to make the payment and will take upto 30 days to settle." If the payment was made from the wallet account, it would take 24-48 hrs for the refund to settle.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="toggle-answer">How long do refunds take?</button>
+            <div class="answer" style="display: none;">"All Refunds made shall be through the original payment account only within 30 working days</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="toggle-answer">How do I extend my booking end time?</button>
+            <div class="answer" style="display: none;">""Extension is subject to vehicle availability and extension can be done before the booking end time. To extend the booking you have to 1. Login to SwiftCar application 2. Click on My trips from Menu option 3. Select the booking 4. Click on extend booking right below the Remaining time. 5. If yes, Key in your desired extension time. 6. Pay the amount immediately to confirm your extension. Failing to pay the extension amount immediately would reverse the extended time and you will have to drop back the vehicle within the originally reserved time. Any Late drop without extension would incur late fees and charges. Extend booking option will be available only if the vehicle is available for extension.</div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.toggle-answer').click(function () {
+                    // 找到当前按钮对应的答案元素
+                    var answer = $(this).next('.answer');
+
+                    // 切换答案的显示与隐藏
+                    answer.slideToggle();
+                });
+            });
+        </script>
+
+
+        @* <div class="create-link">
+            <p>
+                @Html.ActionLink("Create QA here", "Create")
+            </p>
+        </div> *@
+
+
+
+    </div>
+
+    @*以下是表单部分*@
+    <div class="form-container">
+        <div style="margin-top: 40px;">
+            <h2 style="margin-bottom: 20px;">Submit a Question</h2>
+        </div>
+
+        <form action="https://localhost:44315/FAQs" method="post">
+            @* <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name"><br>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name"><br> *@
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+
+            @* <label for="phone_number">Phone Number:</label>
+            <input type="tel" id="phone_number" name="phone_number"><br> *@
+
+            <label for="question">Question:</label>
+            <textarea id="question" name="question"></textarea><br>
+
+            <div class="submit-button">
+                @using (Html.BeginForm("Submit", "TestUserQuestionController", FormMethod.Post))
+                {
+                    <input type="submit" value="Submit">
+                }
+
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    // 监听表单的 submit 事件
+                    $('form').submit(function (event) {
+                        // 阻止表单默认的提交行为
+                        event.preventDefault();
+
+                        // 这里可以添加你的表单验证逻辑
+
+                        // 模拟成功提示
+                        alert('Successful submission!'); // 可以替换为其他更合适的提示方式
+
+                        // 清空表单内容（可选）
+                        $(this)[0].reset();
+                    });
+                });
+            </script>
+
+        </form>
+    </div>
+
+</body>
+</html>

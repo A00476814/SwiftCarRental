@@ -17,63 +17,67 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SwiftCarRental
 build_property.RootNamespace = SwiftCarRental
-build_property.ProjectDir = C:\Users\kheva\source\repos\SwiftCarRental\
+build_property.ProjectDir = D:\2023_Study in SMU\5510_SoftwareDev\5510_Assignments\5510_Project\SwiftCarRental\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\kheva\source\repos\SwiftCarRental
+build_property.MSBuildProjectDirectory = D:\2023_Study in SMU\5510_SoftwareDev\5510_Assignments\5510_Project\SwiftCarRental
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Home/Index.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Home/CustomerService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDdXN0b21lclNlcnZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Home/Privacy.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Shared/Error.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Vehicles/Create.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Vehicles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Vehicles/Delete.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Vehicles/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Vehicles/Details.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Vehicles/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Vehicles/Edit.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Vehicles/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Vehicles/Index.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Vehicles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Vehicles/Search.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Vehicles/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZXNcU2VhcmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/_ViewImports.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/_ViewStart.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kheva/source/repos/SwiftCarRental/Views/Shared/_Layout.cshtml]
+[D:/2023_Study in SMU/5510_SoftwareDev/5510_Assignments/5510_Project/SwiftCarRental/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-2reccuryl0

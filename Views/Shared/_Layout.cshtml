@@ -25,7 +25,8 @@
                         <li class="rent-a-car">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Vehicles" asp-action="Index">Rent a Car</a>
                         </li>
-                        <li class="dropdown">
+                        <partial name="_LoginPartial"/>
+                       @* <li class="dropdown">
                             <a class="nav-link dropdown-toggle"
                                href="#"
                                id="navbarDropdown"
@@ -34,6 +35,7 @@
                                aria-expanded="false">
                                 Login/Register
                             </a>
+                        *@
 
 
                             <ul class="dropdown-menu"

@@ -182,13 +182,31 @@ namespace SwiftCarRental.Controllers
                     availableVehicles.Add(vehicle);
                 }
             }
+            var vehicleSearchViewModel = new VehicleSearchViewModel
+            {
+                AvailableVehicles = availableVehicles,
+                numberOfHours = CalculateRoundedHours(fromDate,toDate)
+            };
 
-            return View(availableVehicles);
+            return View(vehicleSearchViewModel);
         }
 
         private bool VehicleExists(int id)
         {
             return _context.Vehicle.Any(e => e.Id == id);
+        }
+
+        private int CalculateRoundedHours(DateTime start, DateTime end)
+        {
+            if (end < start)
+            {
+                throw new ArgumentException("End date must be greater than or equal to start date.");
+            }
+
+            TimeSpan duration = end - start;
+            double totalHours = duration.TotalHours;
+
+            return (int)Math.Ceiling(totalHours);
         }
     }
 }

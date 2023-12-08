@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Logging;
 using SwiftCarRental.Areas.Identity.Data;
 
@@ -102,11 +103,11 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
             [Required]
             [StringLength(255, ErrorMessage = "Max 255 characters are allowed")]
             [Display(Name = "Country")]
-            public string Country { get; set; }
+            public string Nation { get; set; }
 
             [Required]
             [Display(Name = "Phone Number")]
-            [PhoneNumberValidation(nameof(Country))]
+            [PhoneNumberValidation(nameof(Nation))]
             public string PhoneNumber { get; set; }
 
 
@@ -170,7 +171,7 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
                 user.LastName = Input.LastName;
                 user.LicenceNo = Input.DRivingLicenceNo;
                 user.DateOfBirth = Input.DateOfBirth;
-                user.Country = Input.Country;
+                user.Nation = Input.Nation;
                 user.Phone = Input.PhoneNumber;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);

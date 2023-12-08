@@ -26,7 +26,7 @@ namespace SwiftCarRental.Models
 
             var userEmail = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
             var currentUser = _userDbContext.Users.FirstOrDefault(x => x.Email == userEmail);
-            var country = currentUser.Country;
+            var country = currentUser.Nation;
 
             if (country == "Canada" && !IsValidCanadianPostalCode(postalCode))
             {

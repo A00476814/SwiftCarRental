@@ -31,6 +31,7 @@ namespace SwiftCarRental.Models
 
         [Required]
         [Display(Name = "Postal Code")]
+        [PostalCodeValidation]
         public string PostalCode { get; set; }
     }
 

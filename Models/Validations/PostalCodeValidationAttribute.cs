@@ -10,29 +10,23 @@ namespace SwiftCarRental.Models
 {
     public class PostalCodeValidationAttribute : ValidationAttribute
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
-
-        private readonly userDBContext _userDbContext;
-
-        public PostalCodeValidationAttribute(IHttpContextAccessor httpContextAccessor, userDBContext userDbContext)
-        {
-            _httpContextAccessor = httpContextAccessor;
-            _userDbContext = userDbContext;
-        }
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var paymentDetails = (PaymentDetails)validationContext.ObjectInstance;
             var postalCode = paymentDetails.PostalCode;
 
-            var userEmail = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-            var currentUser = _userDbContext.Users.FirstOrDefault(x => x.Email == userEmail);
+            var httpContextAccessor = (IHttpContextAccessor)validationContext.GetService(typeof(IHttpContextAccessor));
+            var userDbContext = (userDBContext)validationContext.GetService(typeof(userDBContext));
+
+            var userEmail = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            var currentUser = userDbContext.Users.FirstOrDefault(x => x.Email == userEmail);
             var country = currentUser.Country;
 
-            if (country == "Canada" && !IsValidCanadianPostalCode(postalCode))
+            if ((country == "Canada"  || country == "CAN") && !IsValidCanadianPostalCode(postalCode))
             {
                 return new ValidationResult("Invalid Canadian postal code");
             }
-            else if (country == "USA" && !IsValidUSZipCode(postalCode))
+            else if ((country == "USA" || country == "US") && !IsValidUSZipCode(postalCode))
             {
                 return new ValidationResult("Invalid US zip code");
             }
@@ -45,7 +39,7 @@ namespace SwiftCarRental.Models
         private bool IsValidCanadianPostalCode(string postalCode)
         {
             // Canadian postal codes are in the format A1A 1A1, where A is a letter and 1 is a digit.
-            var regex = new System.Text.RegularExpressions.Regex(@"^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$");
+            var regex = new System.Text.RegularExpressions.Regex(@"^[A-Za-z]\dA-Za-z?\d[A-Za-z]\d$");
             return regex.IsMatch(postalCode);
         }
 

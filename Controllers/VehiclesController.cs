@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SwiftCarRental.Areas.Identity.Data;
 using SwiftCarRental.Data;
 using SwiftCarRental.Models;
 
@@ -14,12 +15,14 @@ namespace SwiftCarRental.Controllers
     public class VehiclesController : Controller
     {
         private readonly SwiftCarRentalDBContext _context;
+        private readonly userDBContext _userDBContext;
 
-        public VehiclesController(SwiftCarRentalDBContext context)
+        public VehiclesController(SwiftCarRentalDBContext context,userDBContext userDBContext)
         {
             _context = context;
-        }
 
+        }
+        //Identity/Account/Manage
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {

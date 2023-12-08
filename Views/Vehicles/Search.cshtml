@@ -3,13 +3,41 @@
     ViewData["Title"] = "Search Results";
 }
 
+<link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+
+<style>
+    .container {
+        margin-top: 20px;
+    }
+
+    .car-box {
+        background-color: #343a40; /* Darker background color */
+        color: #fff; /* White text color */
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .car-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .car-details p {
+        margin-bottom: 5px;
+    }
+</style>
+
 <div class="container">
     @foreach (var car in Model.AvailableVehicles)
     {
         <div class="car-box">
             <div class="car-image">
-
-                <img src="@Url.Content("~/images/cars/" + car.LicensePlate +".jpg")" alt="Car Image" />
+                <!-- Image goes here -->
+                <img src="@Url.Content("~/images/cars/" + car.LicensePlate +".jpg")" alt="Car Image" class="img-fluid" />
             </div>
             <div class="car-details">
                 <p>Model: @car.Model</p>
@@ -32,17 +60,6 @@
         </div>
     }
 </div>
-
-<style>
-    .book-button-container {
-        display: inline-block;
-    }
-
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-    }
-</style>
 
 @functions {
     public decimal GetPrice(decimal? pricePerHour, int hours)

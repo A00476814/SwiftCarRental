@@ -1,31 +1,63 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<style>
+    body {
+        background-color: #343a40; /* Set the background color to dark gray */
+        color: #fff; /* Set the text color to white */
+    }
 
-<div class="search-container">
-    <h2>Search for Vehicles</h2>
-    <form asp-controller="Vehicles" asp-action="Search" method="get">
-        <div class="form-group">
-            <label for="fromDate">From Date</label>
-            <input type="datetime-local" id="fromDate" name="fromDate" class="form-control" required />
-        </div>
-        <div class="form-group">
-            <label for="toDate">To Date</label>
-            <input type="datetime-local" id="toDate" name="toDate" class="form-control" required />
-        </div>
-        <div class="form-group">
-            <label for="type">Type</label>
-            <select id="type" name="type" class="form-control">
-                <option value="Hatchback">Hatchback</option>
-                <option value="Sedan">Sedan</option>
-                <option value="SUV">SUV</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
+    .search-container {
+        background-color: #212529; /* Set the background color of the container to black */
+        padding: 20px; /* Add padding for better visibility */
+        border: 2px solid #fff; /* Set border color to white and increase thickness */
+        border-radius: 10px; /* Add border-radius for a rounded appearance */
+    }
+
+        .search-container label {
+            color: #fff; /* Set label text color to white */
+        }
+
+        .search-container input {
+            background-color: #343a40; /* Set input background color to dark gray */
+            color: #fff; /* Set input text color to white */
+            border: 2px solid #fff; /* Set input border color to white and increase thickness */
+            border-radius: 5px; /* Add border-radius for a rounded appearance */
+        }
+
+        .search-container button {
+            background-color: #007bff; /* Set button color to Bootstrap primary color */
+            border: 2px solid #007bff; /* Set button border color to Bootstrap primary color */
+            border-radius: 5px; /* Add border-radius for a rounded appearance */
+        }
+</style>
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4">Swift Car Rental</h1>
+        <p class="lead">"Discover the Perfect Ride for Your Voyage. Swift Car Rental – Unleashing Endless Roads for Your Next Adventure!"</p>
+    </div>
+
+    <div class="search-container mt-5">
+        <h2 class="mb-4">Search for Vehicles</h2>
+        <form asp-controller="Vehicles" asp-action="Search" method="get">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="fromDate" class="form-label">From Date</label>
+                    <input type="date" id="fromDate" name="fromDate" class="form-control" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="toDate" class="form-label">To Date</label>
+                    <input type="date" id="toDate" name="toDate" class="form-control" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="type" class="form-label">Type</label>
+                    <input type="text" id="type" name="type" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
 </div>

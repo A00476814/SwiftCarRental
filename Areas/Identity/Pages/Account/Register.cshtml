@@ -3,8 +3,80 @@
 @{
     ViewData["Title"] = "Register";
 }
+<!-- Add your Bootstrap CSS link here -->
+<link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
 
-<h1>@ViewData["Title"]</h1>
+<style>
+    /* Center the form and give it some padding */
+    .col-md-4 {
+        margin: auto;
+        padding: 20px;
+        background-color: #343a40; /* Dark background color */
+        border-radius: 10px; /* Add border-radius for a rounded appearance */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    }
+
+    /* Style for the form header */
+    h2 {
+        color: #007bff; /* Bootstrap primary color */
+        text-align: center;
+    }
+
+    /* Style for form labels */
+    .form-floating label {
+        color: #ffffff; /* White text color */
+    }
+
+    /* Style for the submit button */
+    #registerSubmit {
+        background-color: #28a745; /* Bootstrap success color */
+    }
+
+    /* Style for the external login section */
+    section {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Style for the external login buttons */
+    .btn-primary {
+        background-color: #007bff !important; /* Bootstrap primary color */
+        margin: 5px;
+    }
+
+    /* Optional: Add a border-radius to the form fields */
+    .form-floating input {
+        border-radius: 5px;
+        background-color: #495057; /* Darker background color for form fields */
+        color: #ffffff; /* Set text color to white for better visibility */
+        border: 1px solid #ced4da; /* Add a border to improve visibility */
+    }
+
+        /* Style specifically for first name, last name, and license number */
+        .form-floating input#Input_FirstName,
+        .form-floating input#Input_LastName,
+        .form-floating input#Input_DRivingLicenceNo {
+            color: #ffffff; /* Set text color to white for better visibility */
+        }
+
+    /* Style for the "Use another service to register" section */
+    .external-service-section {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    /* Style for the card containing the journey text */
+    .journey-card {
+        background-color: #212529; /* Dark background color */
+        color: #fff; /* White text color */
+        border-radius: 10px; /* Add border-radius for a rounded appearance */
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    }
+</style>
+
+
+
 
 <div class="row">
     <div class="col-md-4">
@@ -12,22 +84,22 @@
             <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input asp-for="Input.FirstName" class="form-control" autocomplete="new" aria-required="true" />
                 <label asp-for="Input.FirstName"></label>
                 <span asp-validation-for="Input.FirstName" class="text-danger"></span>
             </div>
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input asp-for="Input.LastName" class="form-control" autocomplete="new" aria-required="true" />
                 <label asp-for="Input.LastName"></label>
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input asp-for="Input.DRivingLicenceNo" class="form-control" autocomplete="new" aria-required="true" />
                 <label asp-for="Input.DRivingLicenceNo"></label>
                 <span asp-validation-for="Input.DRivingLicenceNo" class="text-danger"></span>
             </div>
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input asp-for="Input.DateOfBirth" class="form-control" autocomplete="new" aria-required="true" />
                 <label asp-for="Input.DateOfBirth"></label>
                 <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
@@ -52,32 +124,30 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
+            <div class="external-service-section">
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div class="journey-card">
+                            <p class="fw-bold">
+                                Embark on a Journey of Freedom and Convenience – Register with Swift Car Rental Today and Unlock the Road to Seamless Adventures!
                             </p>
                         </div>
-                    </form>
+                    }
+                    else
+                    {
+                        <div class="col-md-6 col-md-offset-2">
+                            <section>
+                                <div class="card bg-light p-3">
+                                    <p class="fw-bold">
+                                        Embark on a Journey of Freedom and Convenience – Register with Swift Car Rental Today and Unlock the Road to Seamless Adventures!
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                    }
                 }
-            }
+            </div>
         </section>
     </div>
 </div>

@@ -14,5 +14,6 @@ public class SwiftUser : IdentityUser
     public string LastName { get;set;}
     public string LicenceNo { get;set;}
     public DateTime DateOfBirth { get;set;} 
+    public string Country { get;set;}
 }
 

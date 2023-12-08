@@ -153,7 +153,7 @@ namespace SwiftCarRental.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize]
+       // [Authorize]
         public IActionResult Search(DateTime fromDate, DateTime toDate, string type)
         {
 

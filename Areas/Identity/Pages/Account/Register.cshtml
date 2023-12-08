@@ -16,6 +16,18 @@
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
     }
 
+    
+    /* Add this style to change text color in the dropdown */
+    .custom-dropdown option {
+        color: black ;
+    }
+
+    .form-control.custom-dropdown option {
+        color: black !important;
+    }
+
+
+
     /* Style for the form header */
     h2 {
         color: #007bff; /* Bootstrap primary color */
@@ -25,6 +37,11 @@
     /* Style for form labels */
     .form-floating label {
         color: #ffffff; /* White text color */
+    }
+
+    .custom-dropdown {
+        color: black; /* Text color */
+        background-color: #fff; /* Background color */
     }
 
     /* Style for the submit button */
@@ -99,6 +116,16 @@
                 <label asp-for="Input.DRivingLicenceNo"></label>
                 <span asp-validation-for="Input.DRivingLicenceNo" class="text-danger"></span>
             </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Input.Country" asp-items="Model.Input.CountryOptions" class="form-control custom-dropdown" aria-required="true"></select>
+                <label asp-for="Input.Country"></label>
+                <span asp-validation-for="Input.Country" class="text-danger"></span>
+            </div>
+
+
+
+
+
             <div class="form-floating mb-3">
                 <input asp-for="Input.DateOfBirth" class="form-control" autocomplete="new" aria-required="true" />
                 <label asp-for="Input.DateOfBirth"></label>

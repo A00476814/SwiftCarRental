@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using SwiftCarRental.Areas.Identity.Data;
@@ -32,6 +33,8 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
+
+
             UserManager<SwiftUser> userManager,
             IUserStore<SwiftUser> userStore,
             SignInManager<SwiftUser> signInManager,
@@ -45,6 +48,7 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
         }
+       
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -91,6 +95,20 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
             [Display(Name = "Licence Number")]
             public string DRivingLicenceNo { get; set; }
 
+            [Required]
+            [StringLength(255, ErrorMessage = "Max 255 characters are allowed")]
+            [Display(Name = "Country")]
+            public string Country { get; set; }
+
+            // Add a property for the dropdown options
+            public List<SelectListItem> CountryOptions { get; } = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "US", Text = "United States" },
+                new SelectListItem { Value = "CAN", Text = "Canada" }
+            };
+           
+
+
 
             [Required]
             [Display(Name = "Date Of Birth")]
@@ -127,6 +145,7 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            Input = new InputModel();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -140,6 +159,7 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
                 user.LastName = Input.LastName;
                 user.LicenceNo = Input.DRivingLicenceNo;
                 user.DateOfBirth = Input.DateOfBirth;
+                user.Country = Input.Country;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

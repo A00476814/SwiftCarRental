@@ -62,6 +62,15 @@ namespace SwiftCarRental.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            else
+            {
+                var errors = ModelState
+                    .Where(x => x.Value.Errors.Count > 0)
+                    .Select(x => new { x.Key, x.Value.Errors })
+                    .ToArray();
+
+                // Now 'errors' contains the properties that failed to validate and their corresponding error messages.
+            }
             return View(paymentDetails);
         }
 

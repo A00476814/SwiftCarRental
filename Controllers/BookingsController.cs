@@ -74,6 +74,11 @@ namespace SwiftCarRental.Controllers
             var vehicle = _context.Vehicle.Include(v => v.Bookings).FirstOrDefault(v => v.Id == booking.VehicleId);
             booking.Vehicle = vehicle;
             ModelState.Remove("Vehicle");
+            var userEmail = User.Identity.Name;
+            var currentUser = _userDbContext.Users.FirstOrDefault(x => x.Email == userEmail);
+            PaymentHelperModel paymentHelperModel = new PaymentHelperModel();
+            paymentHelperModel.Country = currentUser.Country;
+            paymentHelperModel.PaymentDetails = new PaymentDetails();
             if (vehicle != null)
             {
                 vehicle.Bookings.Add(booking);
@@ -81,7 +86,7 @@ namespace SwiftCarRental.Controllers
                 {
                     _context.Update(vehicle);
                     await _context.SaveChangesAsync();
-                    return View("~/Views/PaymentDetails/create.cshtml");
+                    return View("~/Views/PaymentDetails/create.cshtml", paymentHelperModel);
                 }
                 else
                 {

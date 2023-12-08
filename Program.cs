@@ -5,18 +5,18 @@ using SwiftCarRental.Areas.Identity.Data;
 using SwiftCarRental.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var connectionString= builder.Configuration.GetConnectionString("userDBContext") ?? throw new InvalidOperationException("Connection string 'userDBContext' not found.");
+builder.Services.AddHttpContextAccessor();
+var connectionString= builder.Configuration.GetConnectionString("defaultConnectionString") ?? throw new InvalidOperationException("Connection string 'userDBContext' not found.");
 builder.Services.AddDbContext<userDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("userDBContext")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnectionString")));
 
  //Configure SwiftCarRentalDBContext for application data
 builder.Services.AddDbContext<SwiftCarRentalDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SwiftCarRentalDBContext") ?? throw new InvalidOperationException("Connection string 'SwiftCarRentalDBContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnectionString") ?? throw new InvalidOperationException("Connection string 'SwiftCarRentalDBContext' not found.")));
 
 // Configure userDBContext for identity
 builder.Services.AddDbContext<userDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("userDBContext")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnectionString")));
 
 // Configure identity with userDBContext
 builder.Services.AddDefaultIdentity<SwiftUser>(options => options.SignIn.RequireConfirmedAccount = true)

@@ -1,4 +1,4 @@
-﻿@model SwiftCarRental.Models.PaymentDetails
+﻿@model SwiftCarRental.Models.PaymentHelperModel
 
 @{
     ViewData["Title"] = "Create";
@@ -11,36 +11,41 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-controller="PaymentDetails" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CreditCardType" class="control-label"></label>
-                <select asp-for="CreditCardType" class="form-control">
+                <label asp-for="PaymentDetails.CreditCardType" class="control-label"></label>
+                <select asp-for="PaymentDetails.CreditCardType" class="form-control">
                     <option value="MasterCard">MasterCard</option>
                     <option value="Visa">Visa</option>
                     <option value="American Express">American Express</option>
                 </select>
-                <span asp-validation-for="CreditCardType" class="text-danger"></span>
+                <span asp-validation-for="PaymentDetails.CreditCardType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CreditCardNumber" class="control-label"></label>
-                <input asp-for="CreditCardNumber" class="form-control" />
-                <span asp-validation-for="CreditCardNumber" class="text-danger"></span>
+                <label asp-for="PaymentDetails.CreditCardNumber" class="control-label"></label>
+                <input asp-for="PaymentDetails.CreditCardNumber" class="form-control" />
+                <span asp-validation-for="PaymentDetails.CreditCardNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ExpirationDate" class="control-label"></label>
-                <input asp-for="ExpirationDate" class="form-control" />
-                <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+                <label asp-for="PaymentDetails.ExpirationDate" class="control-label"></label>
+                <input asp-for="PaymentDetails.ExpirationDate" class="form-control" />
+                <span asp-validation-for="PaymentDetails.ExpirationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CVV" class="control-label"></label>
-                <input asp-for="CVV" class="form-control" />
-                <span asp-validation-for="CVV" class="text-danger"></span>
+                <label asp-for="PaymentDetails.CVV" class="control-label"></label>
+                <input asp-for="PaymentDetails.CVV" class="form-control" />
+                <span asp-validation-for="PaymentDetails.CVV" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PostalCode" class="control-label"></label>
-                <input asp-for="PostalCode" class="form-control" />
-                <span asp-validation-for="PostalCode" class="text-danger"></span>
+                <label asp-for="PaymentDetails.PostalCode" class="control-label"></label>
+                <input asp-for="PaymentDetails.PostalCode" class="form-control" />
+                <span asp-validation-for="PaymentDetails.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" readonly />
+                <span asp-validation-for="Country" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -54,5 +59,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

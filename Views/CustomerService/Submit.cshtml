@@ -152,7 +152,7 @@
 
 
     @*以下是表单部分*@
-    <div class="form-container">
+<div class="form-container">
        <div style="margin-top: 40px;">
            <h2 style="margin-bottom: 20px;">Submit a Question</h2>
        </div>
@@ -167,7 +167,6 @@
                 <label for="question">Question:</label>
                 <textarea id="question" name="question"></textarea>
                 <br>
-            <br>
 
             <button type="submit" onsubmit=false>Submit</button>
             }
@@ -184,7 +183,41 @@
 
     </div> 
 
- 
+    @*以下是表单部分*@
+    @* <div class="form-container">
+        <div style="margin-top: 40px;">
+            <h2 style="margin-bottom: 20px;">Submit a Question</h2>
+        </div>
+
+        <form>     
+            @using (Html.BeginForm("Submit", "UserQuestion", FormMethod.Post))
+            {
+                <!-- 表单字段 -->
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+
+                <br>
+                <label for="question">Question:</label>
+                <textarea id="question" name="question"></textarea>
+                <br>
+
+                <div class="submit-button">
+                    <input type="submit" value="Submit"> <!-- 提交按钮 -->
+                </div>
+            }
+            
+            <script>
+                $(document).ready(function () {
+                    // 监听表单的 submit 事件
+                    $('form').submit(function (event) {                       
+                        // event.preventDefault();// 阻止表单默认的提交行为
+                        alert('Successful submission!'); //模拟成功提示,可以替换为其他更合适的提示方式                        
+                        $(this)[0].reset();// 清空表单内容（可选）
+                    });
+                });
+            </script>
+       </form> 
+    </div> *@
 
 </body>
 </html>

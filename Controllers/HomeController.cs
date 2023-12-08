@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using SwiftCarRental.Models;
 using System.Diagnostics;
+using System.Net.Mail;
+using System.Net;
 
 namespace SwiftCarRental.Controllers
 {

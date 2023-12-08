@@ -503,3 +503,5 @@ D:\2023_Study in SMU\5510_SoftwareDev\5510_Assignments\5510_Project\SwiftCarRent
 D:\2023_Study in SMU\5510_SoftwareDev\5510_Assignments\5510_Project\SwiftCarRental\obj\Debug\net8.0\SwiftCarRental.pdb
 D:\2023_Study in SMU\5510_SoftwareDev\5510_Assignments\5510_Project\SwiftCarRental\obj\Debug\net8.0\SwiftCarRental.genruntimeconfig.cache
 D:\2023_Study in SMU\5510_SoftwareDev\5510_Assignments\5510_Project\SwiftCarRental\obj\Debug\net8.0\ref\SwiftCarRental.dll
+D:\2023_Study in SMU\5510_SoftwareDev\5510_Assignments\5510_Project\SwiftCarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Components.QuickGrid.dll
+D:\2023_Study in SMU\5510_SoftwareDev\5510_Assignments\5510_Project\SwiftCarRental\bin\Debug\net8.0\Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter.dll

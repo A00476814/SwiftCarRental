@@ -83,12 +83,16 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
             [Required]
             [StringLength(255, ErrorMessage = "Max 255 characters are allowed")]
             [Display(Name = "First Name")]
+            [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Only alphabets are allowed.")]
             public string FirstName { get; set; }
+
 
             [Required]
             [StringLength(255, ErrorMessage = "Max 255 characters are allowed")]
             [Display(Name = "Last Name")]
+            [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Only alphabets are allowed.")]
             public string LastName { get; set; }
+
 
             [Required]
             [StringLength(255, ErrorMessage = "Max 255 characters are allowed")]

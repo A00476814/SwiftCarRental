@@ -22,9 +22,9 @@
         color: black ;
     }
 
-    .form-control.custom-dropdown option {
+   /*.form-control.custom-dropdown option {
         color: black !important;
-    }
+    }*/
 
 
 
@@ -40,8 +40,8 @@
     }
 
     .custom-dropdown {
-        color: black; /* Text color */
-        background-color: #fff; /* Background color */
+        color: #ffffff; /* Text color */
+        background-color: #495057; /* Background color */
     }
 
     /* Style for the submit button */
@@ -53,6 +53,11 @@
     section {
         text-align: center;
         margin-top: 20px;
+    }
+
+    .custom-dropdown {
+        color: black; /* Text color */
+        background-color: #495057; /* Background color */
     }
 
     /* Style for the external login buttons */
@@ -117,15 +122,12 @@
                 <span asp-validation-for="Input.DRivingLicenceNo" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <select asp-for="Input.Country" asp-items="Model.Input.CountryOptions" class="form-control custom-dropdown" aria-required="true"></select>
+                <select asp-for="Input.Country" asp-items="Model.Input.CountryOptions" class="form-control custom-dropdown" aria-required="true">
+                   
+                </select>
                 <label asp-for="Input.Country"></label>
                 <span asp-validation-for="Input.Country" class="text-danger"></span>
             </div>
-
-
-
-
-
             <div class="form-floating mb-3">
                 <input asp-for="Input.DateOfBirth" class="form-control" autocomplete="new" aria-required="true" />
                 <label asp-for="Input.DateOfBirth"></label>

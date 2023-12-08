@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SwiftCarRental.Data;
 
@@ -11,9 +12,11 @@ using SwiftCarRental.Data;
 namespace SwiftCarRental.Migrations
 {
     [DbContext(typeof(SwiftCarRentalDBContext))]
-    partial class SwiftCarRentalDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231207205948_Updating-Bookings")]
+    partial class UpdatingBookings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,39 +51,6 @@ namespace SwiftCarRental.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Booking");
-                });
-
-            modelBuilder.Entity("SwiftCarRental.Models.PaymentDetails", b =>
-                {
-                    b.Property<int>("PaymentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentId"));
-
-                    b.Property<string>("CVV")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreditCardNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreditCardType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ExpirationDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PaymentId");
-
-                    b.ToTable("PaymentDetails");
                 });
 
             modelBuilder.Entity("SwiftCarRental.Models.Vehicle", b =>

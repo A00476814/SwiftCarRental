@@ -153,41 +153,19 @@ namespace SwiftCarRental.Controllers
         [Authorize]
         public IActionResult Search(DateTime fromDate, DateTime toDate, string type)
         {
-            // First, filter by Type
-            var filteredByType = _context.Vehicle
-                .Where(v => type == null || v.Type == type)
-                .ToList();
 
-            // List to hold vehicles that are available in the given date range
-            var availableVehicles = new List<Vehicle>();
+            var availableVehicles = _context.Vehicle
+                                    .Include(v => v.Bookings)
+                                    .Where(v => type == null || v.Type == type)
+                                    .Where(v => !v.Bookings.Any(b => b.StartDate <= toDate && b.EndDate >= fromDate))
+                                    .ToList();
 
-            // Check each vehicle's availability
-            foreach (var vehicle in filteredByType)
-            {
-                bool isAvailable = true;
-
-                for (int i = 0; i < vehicle.BookingFromDates.Count; i++)
-                {
-                    DateTime bookedFromDate = vehicle.BookingFromDates[i];
-                    DateTime bookedToDate = vehicle.BookingToDates[i];
-
-                    // Check if there's an overlap with the user's desired booking period
-                    if (bookedFromDate <= toDate && bookedToDate >= fromDate)
-                    {
-                        isAvailable = false;
-                        break; // Break the loop if any booking overlaps
-                    }
-                }
-
-                if (isAvailable)
-                {
-                    availableVehicles.Add(vehicle);
-                }
-            }
             var vehicleSearchViewModel = new VehicleSearchViewModel
             {
                 AvailableVehicles = availableVehicles,
-                numberOfHours = CalculateRoundedHours(fromDate,toDate)
+                numberOfHours = CalculateRoundedHours(fromDate,toDate),
+                fromDate = fromDate,
+                toDate = toDate   
             };
 
             return View(vehicleSearchViewModel);

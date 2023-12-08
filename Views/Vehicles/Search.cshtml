@@ -20,7 +20,13 @@
                 <p>Seats: @car.NoOfSeats</p>
                 <p>Price: @GetPrice(car.PricePerHour, Model.numberOfHours) $</p>
                 <div class="book-button-container">
-                    <button class="btn btn-primary btn-book">Book</button>
+                    @using (Html.BeginForm("Create", "Bookings", FormMethod.Get))
+                    {
+                        @Html.Hidden("VehicleId", car.Id)
+                        @Html.Hidden("FromDate", Model.fromDate)
+                        @Html.Hidden("ToDate", Model.toDate)
+                        <input type="submit" value="Book" class="btn btn-primary btn-book" />
+                    }
                 </div>
             </div>
         </div>

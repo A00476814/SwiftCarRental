@@ -5,14 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
 
-<h4>PaymentDetails</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .payment-form {
+        background-color: #343a40;
+        color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Additional styles for form elements */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    /* Style for the submit button */
+    .btn-primary {
+        background-color: #007bff;
+    }
+</style>
+
+<div class="container">
+    <div class="col-md-4 payment-form">
+        <h1>Create</h1>
+
+        <h4>PaymentDetails</h4>
+        <hr />
         <form asp-controller="PaymentDetails" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="PaymentDetails.CreditCardType" class="control-label"></label>
                 <select asp-for="PaymentDetails.CreditCardType" class="form-control">
@@ -22,31 +53,37 @@
                 </select>
                 <span asp-validation-for="PaymentDetails.CreditCardType" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PaymentDetails.CreditCardNumber" class="control-label"></label>
                 <input asp-for="PaymentDetails.CreditCardNumber" class="form-control" />
                 <span asp-validation-for="PaymentDetails.CreditCardNumber" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PaymentDetails.ExpirationDate" class="control-label"></label>
                 <input asp-for="PaymentDetails.ExpirationDate" class="form-control" />
                 <span asp-validation-for="PaymentDetails.ExpirationDate" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PaymentDetails.CVV" class="control-label"></label>
                 <input asp-for="PaymentDetails.CVV" class="form-control" />
                 <span asp-validation-for="PaymentDetails.CVV" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PaymentDetails.PostalCode" class="control-label"></label>
                 <input asp-for="PaymentDetails.PostalCode" class="form-control" />
                 <span asp-validation-for="PaymentDetails.PostalCode" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Country" class="control-label"></label>
                 <input asp-for="Country" class="form-control" readonly />
                 <span asp-validation-for="Country" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

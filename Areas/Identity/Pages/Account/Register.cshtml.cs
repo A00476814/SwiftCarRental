@@ -114,11 +114,8 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
             // Add a property for the dropdown options
             public List<SelectListItem> CountryOptions { get; } = new List<SelectListItem>
             {
-<<<<<<< HEAD
                 new SelectListItem { Value = "United States", Text = "United States" },
-=======
-                new SelectListItem { Value = "USA", Text = "United States" },
->>>>>>> 2cd99a99994b3b0fd0f47cfc73d91634762608b6
+
                 new SelectListItem { Value = "Canada", Text = "Canada" }
             };
            

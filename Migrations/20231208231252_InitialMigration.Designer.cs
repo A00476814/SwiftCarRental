@@ -9,11 +9,11 @@ using SwiftCarRental.Areas.Identity.Data;
 
 #nullable disable
 
-namespace SwiftCarRental.Migrations.userDB
+namespace SwiftCarRental.Migrations
 {
     [DbContext(typeof(userDBContext))]
-    [Migration("20231207012738_UpdatingFields")]
-    partial class UpdatingFields
+    [Migration("20231208231252_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -174,6 +174,10 @@ namespace SwiftCarRental.Migrations.userDB
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
@@ -211,6 +215,10 @@ namespace SwiftCarRental.Migrations.userDB
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")

@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SwiftCarRental.Data;
 
 #nullable disable
 
-namespace SwiftCarRental.Migrations
+namespace SwiftCarRental.Migrations.SwiftCarRentalDB
 {
     [DbContext(typeof(SwiftCarRentalDBContext))]
-    partial class SwiftCarRentalDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231208231327_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

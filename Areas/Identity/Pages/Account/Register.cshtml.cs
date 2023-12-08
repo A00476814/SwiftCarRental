@@ -104,11 +104,18 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
             [Display(Name = "Country")]
             public string Country { get; set; }
 
+            [Required]
+            [Display(Name = "Phone Number")]
+            [PhoneNumberValidation(nameof(Country))]
+            public string PhoneNumber { get; set; }
+
+
+
             // Add a property for the dropdown options
             public List<SelectListItem> CountryOptions { get; } = new List<SelectListItem>
             {
-                new SelectListItem { Value = "US", Text = "United States" },
-                new SelectListItem { Value = "CAN", Text = "Canada" }
+                new SelectListItem { Value = "USA", Text = "United States" },
+                new SelectListItem { Value = "Canada", Text = "Canada" }
             };
            
 
@@ -164,6 +171,7 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
                 user.LicenceNo = Input.DRivingLicenceNo;
                 user.DateOfBirth = Input.DateOfBirth;
                 user.Country = Input.Country;
+                user.Phone = Input.PhoneNumber;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

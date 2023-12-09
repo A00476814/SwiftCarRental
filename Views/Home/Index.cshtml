@@ -32,6 +32,16 @@
             border: 2px solid #007bff; /* Set button border color to Bootstrap primary color */
             border-radius: 5px; /* Add border-radius for a rounded appearance */
         }
+
+    .custom-dropdown option {
+        color: White; /* Text color for dropdown options */
+        background-color: #495057; /* Background color for dropdown options */
+    }
+
+    .custom-dropdown {
+        color: black; /* Text color */
+        background-color: #495057; /* Background color */
+    }
 </style>
 <script>
     function validateDates() {
@@ -66,7 +76,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="type" class="form-label">Type</label>
-                    <select id="type" name="type" class="form-control">
+                    <select id="type" name="type" class="form-control  custom-dropdown">
                         <option value="Hatchback">Hatchback</option>
                         <option value="SUV">SUV</option>
                         <option value="Sedan">Sedan</option>

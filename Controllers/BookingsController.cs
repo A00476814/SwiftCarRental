@@ -77,7 +77,7 @@ namespace SwiftCarRental.Controllers
             var userEmail = User.Identity.Name;
             var currentUser = _userDbContext.Users.FirstOrDefault(x => x.Email == userEmail);
             PaymentHelperModel paymentHelperModel = new PaymentHelperModel();
-            paymentHelperModel.Country = currentUser.Nation;
+            paymentHelperModel.Country = currentUser.Country;
             paymentHelperModel.PaymentDetails = new PaymentDetails();
             if (vehicle != null)
             {

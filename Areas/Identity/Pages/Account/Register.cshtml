@@ -122,11 +122,11 @@
                 <span asp-validation-for="Input.DRivingLicenceNo" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <select asp-for="Input.Nation" asp-items="Model.Input.CountryOptions" class="form-control custom-dropdown" aria-required="true">
+                <select asp-for="Input.Country" asp-items="Model.Input.CountryOptions" class="form-control custom-dropdown" aria-required="true">
                    
                 </select>
-                <label asp-for="Input.Nation"></label>
-                <span asp-validation-for="Input.Nation" class="text-danger"></span>
+                <label asp-for="Input.Country"></label>
+                <span asp-validation-for="Input.Country" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="new" aria-required="true" />

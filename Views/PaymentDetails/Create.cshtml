@@ -15,6 +15,11 @@
         height: 100vh;
     }
 
+    .custom-dropdown {
+        color: black; /* Text color */
+        background-color: #495057; /* Background color */
+    }
+
     .payment-form {
         background-color: #343a40;
         color: #fff;
@@ -53,7 +58,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="PaymentDetails.CreditCardType" class="control-label"></label>
-                        <select asp-for="PaymentDetails.CreditCardType" class="form-control">
+                        <select asp-for="PaymentDetails.CreditCardType" class="form-control custom-dropdown">
                             <option value="MasterCard">MasterCard</option>
                             <option value="Visa">Visa</option>
                             <option value="American Express">American Express</option>

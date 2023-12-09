@@ -103,11 +103,11 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
             [Required]
             [StringLength(255, ErrorMessage = "Max 255 characters are allowed")]
             [Display(Name = "Country")]
-            public string Nation { get; set; }
+            public string Country { get; set; }
 
             [Required]
             [Display(Name = "Phone Number")]
-            [PhoneNumberValidation(nameof(Nation))]
+            [PhoneNumberValidation(nameof(Country))]
             public string PhoneNumber { get; set; }
 
 
@@ -172,7 +172,7 @@ namespace SwiftCarRental.Areas.Identity.Pages.Account
                 user.LastName = Input.LastName;
                 user.LicenceNo = Input.DRivingLicenceNo;
                 user.DateOfBirth = Input.DateOfBirth;
-                user.Nation = Input.Nation;
+                user.Country = Input.Country;
                 user.Phone = Input.PhoneNumber;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);

@@ -26,7 +26,7 @@ namespace SwiftCarRental.Models
             {
                 return new ValidationResult("Invalid Canadian postal code");
             }
-            else if ((country == "USA" || country == "US") && !IsValidUSZipCode(postalCode))
+            else if ((country == "USA" || country == "US" || country == "United States") && !IsValidUSZipCode(postalCode))
             {
                 return new ValidationResult("Invalid US zip code");
             }
@@ -46,7 +46,11 @@ namespace SwiftCarRental.Models
         private bool IsValidUSZipCode(string postalCode)
         {
             // US zip codes are in the format 12345 or 12345-1234.
-            var regex = new System.Text.RegularExpressions.Regex(@"^\d{5}(?:[-\s]\d{4})?$");
+
+            if (postalCode.Length != 5) { 
+                if(postalCode.Length != 10)return false;
+            }
+            var regex = new System.Text.RegularExpressions.Regex(@"^\d{5}(-\d{4})?$");
             return regex.IsMatch(postalCode);
         }
     }

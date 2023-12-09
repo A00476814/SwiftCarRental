@@ -60,7 +60,7 @@ namespace SwiftCarRental.Controllers
             {
                 _context.Add(paymentDetails);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View("PaymentConfirmation");
             }
             else
             {

@@ -20,26 +20,34 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .car-image img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
+        .car-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
 
     .car-details p {
         margin-bottom: 5px;
+    }
+
+    .book-button-container {
+        margin-top: 10px;
+    }
+
+    .btn-book {
+        width: 100%;
     }
 </style>
 
 <div class="container">
     @foreach (var car in Model.AvailableVehicles)
     {
-        <div class="car-box">
-            <div class="car-image">
+        <div class="car-box row">
+            <div class="col-md-4 car-image">
                 <!-- Image goes here -->
                 <img src="@Url.Content("~/images/cars/" + car.LicensePlate +".jpg")" alt="Car Image" class="img-fluid" />
             </div>
-            <div class="car-details">
+            <div class="col-md-8 car-details">
                 <p>Model: @car.Model</p>
                 <p>Brand: @car.Brand</p>
                 <p>Year: @car.ModelYear</p>

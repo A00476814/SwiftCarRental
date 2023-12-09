@@ -13,6 +13,14 @@
         gap: 20px;
     }
 
+    .box-title {
+        top: -10px;
+        left: 50%;
+        font-size: 19px;
+        font-weight: bold;
+        color: #ff6b6b;
+    }
+
     .box {
         background-color: #343a40; /* Darker background color */
         color: #fff; /* White text color */
@@ -23,8 +31,10 @@
     }
 
     .btn-pay {
-        margin-top: 10px;
-        width: 100%;
+        margin-left: 808px;
+        margin-top: 195px;
+        width: 27%;
+        
     }
 
     /* Additional styles for individual sections */
@@ -34,16 +44,28 @@
 
     .rent-dates,
     .user-details {
-        margin-top: 20px;
+        margin-top: 1px;
+        height: 308px;
     }
 
     .payment {
         text-align: right;
     }
+
+    }
+
+    .payment {
+        text-align: right;
+    }
+
+    .payment-box {
+        flex: 0 0 20%; /* Fixed width for payment box */
+    }
 </style>
 
 <div class="container">
     <div class="box details">
+        <div class="box-title">Car Details</div>
         <p>Model: @Html.DisplayFor(model => model.Vehicle.Model)</p>
         <p>Brand: @Html.DisplayFor(model => model.Vehicle.Brand)</p>
         <p>Year: @Html.DisplayFor(model => model.Vehicle.ModelYear)</p>
@@ -53,7 +75,8 @@
         <p>Price Per Hour: @Html.DisplayFor(model => model.Vehicle.PricePerHour) $</p>
     </div>
 
-    <div class="box details user-details">
+    <div class="box user-details">
+        <div class="box-title">User Details</div>
         <p>Name: @Html.DisplayFor(model => model.User.FirstName)</p>
         <p>Email: @Html.DisplayFor(model => model.User.Email)</p>
         <p>License No: @Html.DisplayFor(model => model.User.LicenceNo)</p>
@@ -63,12 +86,15 @@
         </div>
     </div>
 
-    <div class="box payment">
+    <div class="box payment-box">
+        <div class="box-title">Cost Information</div>
         @{
             var hours = (Model.ToDate - Model.FromDate).TotalHours;
             var price = GetPrice(Model.Vehicle.PricePerHour, CalculateRoundedHours(Model.FromDate, Model.ToDate));
             var tax = price * 0.15m;
             var total = price + tax;
+            tax = Math.Round(tax,2);
+            total = Math.Round(price,2);
         }
         <p>Total Hours: @hours</p>
         <p>Total Price Before Tax: @price $</p>
@@ -83,7 +109,7 @@
     @Html.Hidden("LicenceNo", Model.User.LicenceNo)
     @Html.Hidden("StartDate", Model.FromDate)
     @Html.Hidden("EndDate", Model.ToDate)
-    <div class="box payment">
+    <div class="payment-box">
         <input type="submit" value="Proceed to Payment" class="btn btn-primary btn-pay" />
     </div>
 }

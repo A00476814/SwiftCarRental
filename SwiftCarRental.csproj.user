@@ -19,4 +19,7 @@
     <WebStackScaffolding_IdentityDialogWidth>650.4</WebStackScaffolding_IdentityDialogWidth>
     <NameOfLastUsedPublishProfile>C:\Users\kheva\source\repos\SwiftCarRental\Properties\PublishProfiles\SwiftCarRental - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>

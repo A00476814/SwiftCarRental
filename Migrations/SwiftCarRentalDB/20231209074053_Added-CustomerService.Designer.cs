@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SwiftCarRental.Data;
 
@@ -11,9 +12,11 @@ using SwiftCarRental.Data;
 namespace SwiftCarRental.Migrations.SwiftCarRentalDB
 {
     [DbContext(typeof(SwiftCarRentalDBContext))]
-    partial class SwiftCarRentalDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231209074053_Added-CustomerService")]
+    partial class AddedCustomerService
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

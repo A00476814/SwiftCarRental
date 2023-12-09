@@ -54,7 +54,7 @@ namespace SwiftCarRental.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PaymentId,NameOnCard,CreditCardType,CreditCardNumber,ExpirationDate,CVV,PostalCode")] PaymentDetails paymentDetails)
+        public async Task<IActionResult> Create([Bind("PaymentId,NameOnCard,CreditCardType,CreditCardNumber,ExpirationDate,CVV,PostalCode,City,ProvinceState")] PaymentDetails paymentDetails)
         {
             if (ModelState.IsValid)
             {

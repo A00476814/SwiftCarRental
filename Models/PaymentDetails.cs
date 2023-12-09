@@ -8,7 +8,7 @@ namespace SwiftCarRental.Models
         [Key]
         public int PaymentId { get; set; }
 
-        [Required]
+                [Required]
         [Display(Name = "Name on Card")]
         [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Name on card should only contain letters")]
         public string NameOnCard { get; set; }
@@ -38,6 +38,16 @@ namespace SwiftCarRental.Models
         [Display(Name = "Postal Code")]
         [PostalCodeValidation]
         public string PostalCode { get; set; }
+
+        [Required]
+        [Display(Name = "City")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "City should only contain letters")]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "Province/State")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Province/State should only contain letters")]
+        public string ProvinceState { get; set; }
     }
 
 

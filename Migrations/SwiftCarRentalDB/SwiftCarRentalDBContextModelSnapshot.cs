@@ -62,6 +62,10 @@ namespace SwiftCarRental.Migrations.SwiftCarRentalDB
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CreditCardNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -79,6 +83,10 @@ namespace SwiftCarRental.Migrations.SwiftCarRentalDB
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProvinceState")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

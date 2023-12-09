@@ -15,11 +15,6 @@
         height: 100vh;
     }
 
-    .custom-dropdown {
-        color: black; /* Text color */
-        background-color: #495057; /* Background color */
-    }
-
     .payment-form {
         background-color: #343a40;
         color: #fff;
@@ -27,6 +22,7 @@
         border-radius: 10px;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 130%; /* Adjusted width to cover at least half of the page */
     }
 
     /* Additional styles for form elements */
@@ -39,10 +35,21 @@
         background-color: #007bff;
     }
 
+    .custom-dropdown {
+        color: black; /* Text color */
+        background-color: #495057; /* Background color */
+    }
+
     /* Style for the heading text */
     h1, h4 {
         color: #ff6b6b; /* Pinkish-red color */
     }
+    /* Style for the dropdown options */
+    .custom-dropdown option {
+        color: White; /* Text color for dropdown options */
+        background-color: #495057; /* Background color for dropdown options */
+    }
+
 </style>
 
 <div class="container">
@@ -66,6 +73,7 @@
                         <span asp-validation-for="PaymentDetails.CreditCardType" class="text-danger"></span>
                     </div>
                 </div>
+                
 
                 <div class="col-md-6">
                     <div class="form-group">
@@ -106,7 +114,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="Country" class="control-label"></label>
-                        <input asp-for="Country" class="form-control" readonly />
+                        <input asp-for="Country" class="form-control custom-dropdown" readonly />
                         <span asp-validation-for="Country" class="text-danger"></span>
                     </div>
                 </div>

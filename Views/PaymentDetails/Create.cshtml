@@ -51,7 +51,7 @@
 
         <h4>Payment Details</h4>
         <hr />
-        <form asp-controller="PaymentDetails" asp-action="Create">
+        <form asp-controller="PaymentDetails" asp-action="Create" id="paymentForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="row">
@@ -66,7 +66,13 @@
                         <span asp-validation-for="PaymentDetails.CreditCardType" class="text-danger"></span>
                     </div>
                 </div>
-
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PaymentDetails.NameOnCard" class="control-label"></label>
+                        <input asp-for="PaymentDetails.NameOnCard" class="form-control" />
+                        <span asp-validation-for="PaymentDetails.NameOnCard" class="text-danger"></span>
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="PaymentDetails.CreditCardNumber" class="control-label"></label>
@@ -122,7 +128,27 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#paymentForm").submit(function (event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+                url: '@Url.Action("ValidatePayment", "PaymentDetails")',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    if (response.hasErrors) {
+                        alert(response.errorMessage); // This is where the dialog box is shown
+                    } else {
+                        $("#paymentForm").unbind('submit').submit();
+                    }
+                }
+            });
+        });
+    });
+</script>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

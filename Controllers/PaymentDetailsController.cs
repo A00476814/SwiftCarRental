@@ -54,7 +54,7 @@ namespace SwiftCarRental.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PaymentId,CreditCardType,CreditCardNumber,ExpirationDate,CVV,PostalCode")] PaymentDetails paymentDetails)
+        public async Task<IActionResult> Create([Bind("PaymentId,NameOnCard,CreditCardType,CreditCardNumber,ExpirationDate,CVV,PostalCode")] PaymentDetails paymentDetails)
         {
             if (ModelState.IsValid)
             {
@@ -141,6 +141,29 @@ namespace SwiftCarRental.Controllers
             }
 
             return View(paymentDetails);
+        }
+
+        [HttpPost]
+        public IActionResult ValidatePayment(PaymentDetails paymentDetails)
+        {
+            if (ModelState.IsValid)
+            {
+                return Json(new { hasErrors = false });
+            }
+            else
+            {
+                var errors = ModelState
+                    .Where(x => x.Value.Errors.Count > 0)
+                    .Select(x => new { x.Key, x.Value.Errors })
+                    .ToArray();
+                if (errors.Any())
+                {
+                    var firstError = errors.First().Errors.First().ErrorMessage;
+                    return Json(new { hasErrors = true, errorMessage = firstError });
+                }
+                // Now 'errors' contains the properties that failed to validate and their corresponding error messages.
+            }
+            return Json(new { hasErrors = false });
         }
 
         // POST: PaymentDetails/Delete/5

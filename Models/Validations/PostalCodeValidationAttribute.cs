@@ -39,7 +39,7 @@ namespace SwiftCarRental.Models
         private bool IsValidCanadianPostalCode(string postalCode)
         {
             // Canadian postal codes are in the format A1A 1A1, where A is a letter and 1 is a digit.
-            var regex = new System.Text.RegularExpressions.Regex(@"^[A-Za-z]\dA-Za-z?\d[A-Za-z]\d$");
+            var regex = new System.Text.RegularExpressions.Regex(@"^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$");
             return regex.IsMatch(postalCode);
         }
 

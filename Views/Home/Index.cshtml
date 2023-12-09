@@ -33,7 +33,19 @@
             border-radius: 5px; /* Add border-radius for a rounded appearance */
         }
 </style>
+<script>
+    function validateDates() {
+        var fromDate = new Date(document.getElementById("fromDate").value);
+        var toDate = new Date(document.getElementById("toDate").value);
 
+        if (toDate < fromDate) {
+            alert("End date can't be smaller than start date.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
 <div class="container mt-5">
     <div class="text-center">
         <h1 class="display-4">Swift Car Rental</h1>
@@ -42,7 +54,7 @@
 
     <div class="search-container mt-5">
         <h2 class="mb-4">Search for Vehicles</h2>
-        <form asp-controller="Vehicles" asp-action="Search" method="get">
+        <form onsubmit="return validateDates()" asp-controller="Vehicles" asp-action="Search" method="get">
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="fromDate" class="form-label">From Date</label>
@@ -54,7 +66,11 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="type" class="form-label">Type</label>
-                    <input type="text" id="type" name="type" class="form-control" />
+                    <select id="type" name="type" class="form-control">
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Sedan">Sedan</option>
+                    </select>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Search</button>

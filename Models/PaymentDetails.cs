@@ -9,6 +9,11 @@ namespace SwiftCarRental.Models
         public int PaymentId { get; set; }
 
         [Required]
+        [Display(Name = "Name on Card")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Name on card should only contain letters")]
+        public string NameOnCard { get; set; }
+
+        [Required]
         [Display(Name = "Credit Card Type")]
         public string CreditCardType { get; set; }
 

@@ -1,12 +1,19 @@
-﻿namespace SwiftCarRental.Models
+﻿using SwiftCarRental.Areas.Identity.Data;
+
+namespace SwiftCarRental.Models
 {
     public class Booking
     {
-        public int Id { get; set; }
-        public DateTime FromDate { get; set; }
-        public DateTime ToDate { get; set; }
+        public int BookingId { get; set; }
         public int VehicleId { get; set; }
+        public string LicenceNo { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+
         public Vehicle Vehicle { get; set; }
+        
+        
     }
 }
     

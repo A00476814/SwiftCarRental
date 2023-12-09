@@ -1,0 +1,146 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<!-- Add your Bootstrap CSS link here -->
+<link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+
+<style>
+    /* Center the form and give it some padding */
+    .col-md-4 {
+        margin: auto;
+        padding: 20px;
+        background-color: #343a40; /* Dark background color */
+        border-radius: 10px; /* Add border-radius for a rounded appearance */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    }
+
+    /* Style for the form header */
+    h2 {
+        color: #007bff; /* Bootstrap primary color */
+        text-align: center;
+    }
+
+    /* Style for form labels */
+    .form-floating label {
+        color: #ffffff; /* White text color */
+    }
+
+    /* Style for the submit button */
+    #login-submit {
+        background-color: #007bff; /* Bootstrap primary color */
+    }
+
+    /* Style for the external login section */
+    section {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Style for the external login buttons */
+    .btn-primary {
+        background-color: #007bff !important; /* Bootstrap primary color */
+        margin: 5px;
+    }
+
+    /* Optional: Add a border-radius to the form fields */
+    .form-floating input {
+        border-radius: 5px;
+        background-color: #495057; /* Darker background color for form fields */
+        color: #ffffff; /* Set text color to white for better visibility */
+        border: 1px solid #ced4da; /* Add a border to improve visibility */
+    }
+
+    /* Style for the "Welcome to Swift Car rental" section */
+    .welcome-section {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    /* Style for the card containing the welcome text */
+    .welcome-card {
+        background-color: #212529; /* Dark background color */
+        color: #fff; /* White text color */
+        border-radius: 10px; /* Add border-radius for a rounded appearance */
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post">
+                <h2>Use a local account to log in.</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+                <div>
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    </p>
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <div class="welcome-section">
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div class="welcome-card">
+                            <p class="fw-bold">
+                                "Unlock Your Next Adventure: Seamless Login, Limitless Drives!".
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins!)
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                }
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

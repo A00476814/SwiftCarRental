@@ -1,0 +1,143 @@
+﻿@model SwiftCarRental.Models.BookingDetails
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+
+<style>
+    .container {
+        display: flex;
+        gap: 20px;
+    }
+
+    .box-title {
+        top: -10px;
+        left: 50%;
+        font-size: 19px;
+        font-weight: bold;
+        color: #ff6b6b;
+    }
+
+    .box {
+        background-color: #343a40; /* Darker background color */
+        color: #fff; /* White text color */
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-pay {
+        margin-left: 808px;
+        margin-top: 195px;
+        width: 27%;
+        
+    }
+
+    /* Additional styles for individual sections */
+    .details p {
+        margin-bottom: 10px;
+    }
+
+    .rent-dates,
+    .user-details {
+        margin-top: 1px;
+        height: 308px;
+    }
+
+    .payment {
+        text-align: right;
+    }
+
+    }
+
+    .payment {
+        text-align: right;
+    }
+
+    .payment-box {
+        flex: 0 0 20%; /* Fixed width for payment box */
+    }
+</style>
+
+<div class="container">
+    <div class="box details">
+        <div class="box-title">Car Details</div>
+        <p>Model: @Html.DisplayFor(model => model.Vehicle.Model)</p>
+        <p>Brand: @Html.DisplayFor(model => model.Vehicle.Brand)</p>
+        <p>Year: @Html.DisplayFor(model => model.Vehicle.ModelYear)</p>
+        <p>Type: @Html.DisplayFor(model => model.Vehicle.Type)</p>
+        <p>Odometer: @Html.DisplayFor(model => model.Vehicle.Odometer)</p>
+        <p>Seats: @Html.DisplayFor(model => model.Vehicle.NoOfSeats)</p>
+        <p>Price Per Hour: @Html.DisplayFor(model => model.Vehicle.PricePerHour) $</p>
+    </div>
+
+    <div class="box user-details">
+        <div class="box-title">User Details</div>
+        <p>Name: @Html.DisplayFor(model => model.User.FirstName)</p>
+        <p>Email: @Html.DisplayFor(model => model.User.Email)</p>
+        <p>License No: @Html.DisplayFor(model => model.User.LicenceNo)</p>
+        <div class="rent-dates">
+            <p>From Date: @Html.DisplayFor(model => model.FromDate)</p>
+            <p>To Date: @Html.DisplayFor(model => model.ToDate)</p>
+        </div>
+    </div>
+
+    <div class="box payment-box">
+        <div class="box-title">Cost Information</div>
+        @{
+            var hours = (Model.ToDate - Model.FromDate).TotalHours;
+            var price = GetPrice(Model.Vehicle.PricePerHour, CalculateRoundedHours(Model.FromDate, Model.ToDate));
+            var tax = price * 0.15m;
+            var total = price + tax;
+            tax = Math.Round(tax,2);
+            total = Math.Round(total, 2);
+        }
+        <p>Total Hours: @hours</p>
+        <p>Total Price Before Tax: @price $</p>
+        <p>Tax (15%): @tax $</p>
+        <p>Total Price After Tax: @total $</p>
+    </div>
+</div>
+
+@using (Html.BeginForm("Create", "Bookings", FormMethod.Post))
+{
+    @Html.Hidden("VehicleId", Model.Vehicle.Id)
+    @Html.Hidden("LicenceNo", Model.User.LicenceNo)
+    @Html.Hidden("StartDate", Model.FromDate)
+    @Html.Hidden("EndDate", Model.ToDate)
+    <div class="payment-box">
+        <input type="submit" value="Proceed to Payment" class="btn btn-primary btn-pay" />
+    </div>
+}
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+@functions {
+    public decimal GetPrice(decimal? pricePerHour, int hours)
+    {
+        return (pricePerHour ?? 0) * hours;
+    }
+
+    private int CalculateRoundedHours(DateTime start, DateTime end)
+    {
+        if (end < start)
+        {
+            throw new ArgumentException("End date must be greater than or equal to the start date.");
+        }
+
+        TimeSpan duration = end - start;
+        double totalHours = duration.TotalHours;
+
+        return (int)Math.Ceiling(totalHours);
+    }
+}

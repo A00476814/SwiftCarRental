@@ -15,9 +15,12 @@ namespace SwiftCarRental.Models
         public int? NoOfSeats { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
         public decimal? PricePerHour { get; set; }
+        public List<Booking> Bookings { get; set; }
 
-        public List<DateTime> BookingFromDates { get; set; }
-        public List<DateTime> BookingToDates { get; set; }
+        public Vehicle()
+        {
+            Bookings = new List<Booking>();
+        }
 
     }
 }

@@ -14,6 +14,10 @@ namespace SwiftCarRental.Data
         {
         }
         public DbSet<SwiftCarRental.Models.Vehicle> Vehicle { get; set; } = default!;
+        public DbSet<SwiftCarRental.Models.Booking> Booking { get; set; } = default!;
+        public DbSet<SwiftCarRental.Models.PaymentDetails> PaymentDetails { get; set; } = default!;
+        public DbSet<SwiftCarRental.Models.CustomerService> CustomerService { get; set; } = default!;
+
 
     }
 }

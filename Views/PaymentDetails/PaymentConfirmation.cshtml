@@ -1,0 +1,60 @@
+﻿@model SwiftCarRental.Models.PaymentDetails
+
+@{
+    ViewData["Title"] = "Payment Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #007bff; /* Bootstrap primary color */
+        color: #ffffff; /* White text on the header */
+        border-bottom: 1px solid #ddd;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-title {
+        color: #007bff; /* Bootstrap primary color for card title */
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Bootstrap primary color for buttons */
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h2>Payment Confirmation</h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Thank You for Your Payment</h4>
+                    <p class="card-text">Your payment has been successfully processed.</p>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

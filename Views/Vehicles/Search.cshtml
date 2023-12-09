@@ -1,24 +1,69 @@
-﻿@model IEnumerable<SwiftCarRental.Models.Vehicle>
+﻿@model SwiftCarRental.Models.VehicleSearchViewModel
 @{
     ViewData["Title"] = "Search Results";
 }
 
+<link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+
+<style>
+    .container {
+        margin-top: 20px;
+    }
+
+    .car-box {
+        background-color: #343a40; /* Darker background color */
+        color: #fff; /* White text color */
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .car-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+    .car-details p {
+        margin-bottom: 5px;
+    }
+
+    .book-button-container {
+        margin-top: 10px;
+    }
+
+    .btn-book {
+        width: 100%;
+    }
+</style>
+
 <div class="container">
-    @foreach (var car in Model)
+    @foreach (var car in Model.AvailableVehicles)
     {
-        <div class="car-box">
-            <div class="car-image">
+        <div class="car-box row">
+            <div class="col-md-4 car-image">
                 <!-- Image goes here -->
-                <img src="@Url.Content("~/path/to/car/image.jpg")" alt="Car Image" />
+                <img src="@Url.Content("~/images/cars/" + car.LicensePlate +".jpg")" alt="Car Image" class="img-fluid" />
             </div>
-            <div class="car-details">
+            <div class="col-md-8 car-details">
                 <p>Model: @car.Model</p>
                 <p>Brand: @car.Brand</p>
                 <p>Year: @car.ModelYear</p>
                 <p>Type: @car.Type</p>
                 <p>Odometer: @car.Odometer</p>
                 <p>Seats: @car.NoOfSeats</p>
-                <p>Price: @GetPrice(car.PricePerHour, 10) $/hour</p>
+                <p>Price: @GetPrice(car.PricePerHour, Model.numberOfHours) $</p>
+                <div class="book-button-container">
+                    @using (Html.BeginForm("Create", "Bookings", FormMethod.Get))
+                    {
+                        @Html.Hidden("VehicleId", car.Id)
+                        @Html.Hidden("FromDate", Model.fromDate)
+                        @Html.Hidden("ToDate", Model.toDate)
+                        <input type="submit" value="Book" class="btn btn-primary btn-book" />
+                    }
+                </div>
             </div>
         </div>
     }

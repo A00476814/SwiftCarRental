@@ -1,0 +1,136 @@
+﻿@model IEnumerable<SwiftCarRental.Models.CustomerService>
+
+@{
+    ViewData["Title"] = "Customer Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+    .toggle-answer {
+            background-color: white;
+            border: none;
+            width: 100%;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+           
+            text-align: left; 
+            padding: 10px; 
+            font-size: 18px; 
+        }
+
+
+        .answer {
+            margin-top: 10px;
+            margin-left: 10px;
+            display: none;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            width: 40%;
+            padding-left: 10px; 
+            text-align: left; 
+        
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="tel"] {
+            width: calc(100% - 10px); 
+            margin-bottom: 10px; 
+         }
+            
+
+        .form-container textarea {
+            width: calc(100% - 10px); 
+            margin-bottom: -10px; 
+        }
+
+        .submit-button {
+         
+            position: relative; 
+            top: 20px;
+
+        }
+
+        .create-link {
+            margin-top: 20px; 
+            display: inline-block; 
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="table-container">
+        <h2>FAQs</h2>
+
+
+        @foreach (var faq in Model) 
+        {
+            <div class="faq-item">
+                <button class="toggle-answer">@faq.Question</button>
+                <div class="answer" style="display: none;">@faq.Answer</div>
+            </div>
+        }
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.toggle-answer').click(function () {
+                   
+                    var answer = $(this).next('.answer');
+
+                    answer.slideToggle();
+                });
+            });
+        </script>
+
+
+
+    </div>
+
+
+
+    <div class="form-container">
+        <h2>Submit a Question</h2>
+        @using (Html.BeginForm("Submit", "CustomerServices", FormMethod.Post))
+        {
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <br>
+            <label for="question">Your Question:</label>
+            <textarea id="question" name="question" required></textarea>
+            <br>
+
+            <input type="submit" value="Submit">
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('form').on('submit', function (event) {
+                event.preventDefault();
+                var email = $('#email').val();
+                var question = $('#question').val();
+                if (email && question) {
+                    alert('Your question is successfully submitted to the customer service team. We will revert back to you within 48 hours.');
+                    $.post('@Url.Action("Submit", "CustomerServices")', { email: email, question: question });
+                    this.reset();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

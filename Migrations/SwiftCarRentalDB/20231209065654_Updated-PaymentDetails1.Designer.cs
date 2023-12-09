@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SwiftCarRental.Data;
 
@@ -11,9 +12,11 @@ using SwiftCarRental.Data;
 namespace SwiftCarRental.Migrations.SwiftCarRentalDB
 {
     [DbContext(typeof(SwiftCarRentalDBContext))]
-    partial class SwiftCarRentalDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231209065654_Updated-PaymentDetails1")]
+    partial class UpdatedPaymentDetails1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,27 +51,6 @@ namespace SwiftCarRental.Migrations.SwiftCarRentalDB
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Booking");
-                });
-
-            modelBuilder.Entity("SwiftCarRental.Models.CustomerService", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("Answer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CustomerService");
                 });
 
             modelBuilder.Entity("SwiftCarRental.Models.PaymentDetails", b =>
